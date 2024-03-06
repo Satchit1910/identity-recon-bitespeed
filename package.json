@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "pg": "^8.11.3"
+  },
+  "name": "identity-recon-bitespeed",
+  "description": "Identity Reconciliation Project for Bitespeed.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Satchit Hari",
+  "license": "ISC"
+}
