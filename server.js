@@ -1,4 +1,5 @@
 const dbClient = require('./connection.js');
+const fs = require('fs');
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
@@ -9,6 +10,18 @@ app.listen(8080, () => {
 })
 
 dbClient.connect();
+
+app.get('/bitespeed', (req, res) => {
+    fs.readFile('public/message.html', 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading HTML file:', err);
+            res.status(500).send('Internal Server Error');
+        } else {
+            res.setHeader('Content-Type', 'text/html');
+            res.send(data);
+        }
+    });
+});
 
 function getRequest() {
     app.get('/contacts', async (req,res)=>{
