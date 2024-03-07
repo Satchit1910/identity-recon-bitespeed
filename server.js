@@ -39,7 +39,6 @@ function identifyRequest() {
             if(!linkedEmails.includes(linkedContact.email)) linkedEmails.push(linkedContact.email)
             if(!linkedPhoneNumbers.includes(linkedContact.phone_number)) linkedPhoneNumbers.push(linkedContact.phone_number)
         });
-        // console.log(primaryContact)
         var secondaryContactIds = []
         linkedContacts.forEach(linkedContact => {
             if(linkedContact.id != primaryContact.id) {
@@ -47,7 +46,6 @@ function identifyRequest() {
                 if(linkedContact.linked_id != primaryContact.id) updateContact(linkedContact,primaryContact)
             }
         });
-        // console.log(linkedContacts,secondaryContactIds)
         var consolidatedContact = {
             "contact": {
                 "primaryContactId": primaryContact.id,
@@ -101,6 +99,7 @@ async function getContacts() {
     return new Promise((resolve, reject) => {
         dbClient.query(`SELECT * FROM contacts`, (err, result) => {
             if (err) {
+                console.log(err)
                 reject(err);
             } else {
                 resolve(result.rows);
